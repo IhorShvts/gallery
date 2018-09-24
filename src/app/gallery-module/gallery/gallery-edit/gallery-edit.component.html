@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="angFormEd" novalidate>
+            <div class="form-group">
+                <label class="col-md-4">Picture Title</label>
+                <input type="text" class="form-control" formControlName="titleEd" minlength="1" #titleEd
+                       [ngModel]="edData.title"/>
+            </div>
+            <div *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)"
+                 class="alert alert-danger">
+                <div *ngIf="angFormEd.controls['titleEd'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">Picture Address (url)</label>
+                <input type="url" class="form-control" formControlName="urlEd" #urlEd pattern="https?://.+"
+                       title="Include http://" [ngModel]="edData.url"/>
+            </div>
+            <div *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)"
+                 class="alert alert-danger">
+                Address(url) is required.
+                <div *ngIf="angFormEd.controls['urlEd'].errors.required ">
+
+                </div>
+            </div>
+            <div class="form-group but-group">
+                <button (click)="updatePost(titleEd.value, urlEd.value); editClose(); angFormEd.reset(titleEd.value, urlEd.value)"
+                        [disabled]="angFormEd.pristine || angFormEd.invalid"
+                        class="btn btn-primary">Update Post
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,3 @@
-.card { max-width: 1065px}
 .header {
     text-align: center;
     color: #5e5e5e;
@@ -24,10 +23,9 @@ h1 {
     padding: 30px;
     float: right;
 }
+
 .create-post {
     padding: 30px;
     float: left;
 }
-.but-group {
-    text-align: center;
-}
+
