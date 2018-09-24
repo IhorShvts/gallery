@@ -1,0 +1,41 @@
+img {
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    max-width: 210px;
+    min-height: 200px;
+    min-width: 210px;
+}
+
+img:hover {
+    opacity: 0.95;
+    filter: alpha(opacity=60);
+}
+
+p {
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: sans-serif;
+    color: #5e5e5e;
+    max-width: 210px;
+}
+
+span {
+    margin-right: 3px;
+}
+
+.buttons {
+    margin: -16px 0 10px 0;
+    text-align: center;
+
+}
+.ed {
+    float: left;
+}
+.del {
+    float: right;
+}

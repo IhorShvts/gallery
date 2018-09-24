@@ -1,0 +1,97 @@
+<div class="header">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+            <h1>{{gallery}}</h1>
+            <div class="show-hide">
+                <button type="button" class="btn tog" [class.btn-outline-danger]="toggle"
+                        [class.btn-outline-info]="!toggle"
+                        (click)="makeToggle()">
+                    {{toggle ? 'Hide Gallery' : 'Show Gallery'}}
+                </button>
+            </div>
+            <div class="create-post">
+                <button type="button" class="btn tog" [class.btn-outline-danger]="toggleCreate"
+                        [class.btn-outline-success]="!toggleCreate" (click)="makeToggleCreate()">
+                    {{toggleCreate ? 'Close' : 'Add New Post'}}
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="card" *ngIf="toggleCreate">
+    <div class="card-body">
+        <form [formGroup]="angForm" novalidate>
+            <div class="form-group">
+                <label class="col-md-4">Picture Title</label>
+                <input type="text" class="form-control" formControlName="title" minlength="1" #title/>
+            </div>
+            <div *ngIf="angForm.controls['title'].invalid && (angForm.controls['title'].dirty || angForm.controls['title'].touched)"
+                 class="alert alert-danger">
+                <div *ngIf="angForm.controls['title'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">Picture Address (url)</label>
+                <input type="url" class="form-control" formControlName="url" #url pattern="https?://.+"
+                       title="Include http://"/>
+            </div>
+            <div *ngIf="angForm.controls['url'].invalid && (angForm.controls['url'].dirty || angForm.controls['url'].touched)"
+                 class="alert alert-danger">
+                Address(url) is required.
+                <div *ngIf="angForm.controls['url'].errors.required ">
+
+                </div>
+            </div>
+            <div class="form-group but-group">
+                <button (click)="addPost(title.value, url.value); angForm.reset(title.value, url.value)"
+                        [disabled]="angForm.pristine || angForm.invalid"
+                        class="btn btn-primary">Add
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card" *ngIf="toggleUpdate">
+    <div class="card-body">
+        <form [formGroup]="angFormEd" novalidate>
+            <div class="form-group">
+                <label class="col-md-4">Picture Title</label>
+                <input type="text" class="form-control" formControlName="titleEd" minlength="1" #titleEd
+                       [ngModel]="edData.title"/>
+            </div>
+            <div *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)"
+                 class="alert alert-danger">
+                <div *ngIf="angFormEd.controls['titleEd'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">Picture Address (url)</label>
+                <input type="url" class="form-control" formControlName="urlEd" #urlEd pattern="https?://.+"
+                       title="Include http://" [ngModel]="edData.url"/>
+            </div>
+            <div *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)"
+                 class="alert alert-danger">
+                Address(url) is required.
+                <div *ngIf="angFormEd.controls['urlEd'].errors.required ">
+
+                </div>
+            </div>
+            <div class="form-group but-group">
+                <button (click)="updatePost(titleEd.value, urlEd.value); angFormEd.reset(titleEd.value, urlEd.value)"
+                        [disabled]="angFormEd.pristine || angFormEd.invalid"
+                        class="btn btn-primary">Update Post
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row" *ngIf="toggle">
+    <div class="col-lg-3 col-md-4 col-6" *ngFor="let pic of collection">
+        <app-gallery-item [pic]="pic" (remove)="removePost($event)" (edit)="editPost($event)"></app-gallery-item>
+    </div>
+</div>
+
+

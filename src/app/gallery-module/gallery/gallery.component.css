@@ -1,0 +1,33 @@
+.card { max-width: 1065px}
+.header {
+    text-align: center;
+    color: #5e5e5e;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+.tog {
+    color: #5e5e5e;
+    border-color: #5e5e5e;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tog:hover {
+    color: #e1e1e1;
+}
+
+.show-hide {
+    padding: 30px;
+    float: right;
+}
+.create-post {
+    padding: 30px;
+    float: left;
+}
+.but-group {
+    text-align: center;
+}

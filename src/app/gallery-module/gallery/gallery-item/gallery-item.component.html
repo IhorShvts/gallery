@@ -1,0 +1,6 @@
+<img [src]="pic.url" alt="test" class="img-responsive">
+<p class="lead"><span>{{pic.id}}:</span>{{pic.title}}</p>
+<div class="card buttons">
+    <button class="btn btn-success ed" (click)="editPost(pic)">Edit</button>
+    <button class="btn btn-danger del" (click)="removePost(pic.id)">Delete</button>
+</div>
