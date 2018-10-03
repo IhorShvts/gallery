@@ -11,3 +11,9 @@
 .but-group {
     text-align: center;
 }
+.btn-primary {
+    float: left;
+}
+.btn-danger {
+    float: right;
+}

@@ -19,11 +19,10 @@
 
     </div>
 </div>
-<app-gallery-add *ngIf="toggleCreate" [collection]="collection"></app-gallery-add>
-<app-gallery-edit *ngIf="formUpdate" [edData]="edData" [collection]="collection" [formUpdate]="formUpdate"
-                  (closeEdit)="formUpdate = false">
+<app-gallery-add [collection]="collection" [edData]="edData" [formUpdate]="formUpdate" [toggleCreate]="toggleCreate"
+                 (closeAdd)="toggleCreate = false"
+                 (closeEdit)="formUpdate = false"></app-gallery-add>
 
-</app-gallery-edit>
 <div class="row" *ngIf="toggle">
     <div class="col-lg-3 col-md-4 col-6" *ngFor="let pic of collection">
         <app-gallery-item [pic]="pic" (remove)="removePost($event)" (edit)="editPost($event)"></app-gallery-item>

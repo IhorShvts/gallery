@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Picture} from "../Picture";
 
@@ -10,9 +10,15 @@ import {Picture} from "../Picture";
 export class GalleryAddComponent implements OnInit {
     @Input() collection: Picture[];
     angForm: FormGroup;
-
+    @Input() edData: Picture;
+    @Input() toggleCreate: boolean;
+    @Input() formUpdate: boolean;
+    @Output() closeAdd: EventEmitter<boolean> = new EventEmitter();
+    @Output() closeEdit: EventEmitter<boolean> = new EventEmitter();
+    angFormEd: FormGroup;
     constructor(private fb: FormBuilder) {
         this.createForm();
+        this.createFormEd();
     }
 
     ngOnInit() {
@@ -34,4 +40,29 @@ export class GalleryAddComponent implements OnInit {
         };
         this.collection.unshift(post);
     }
+    createFormEd(): void {
+        this.angFormEd = this.fb.group({
+            titleEd: ['', Validators.required],
+            urlEd: ['', Validators.required]
+        });
+    }
+
+    updatePost(title: string, url: string): void {
+        const id: number = this.edData.id;
+        this.collection.forEach(post => {
+            if (post.id === id) {
+                this.edData.title = title;
+                this.edData.url = url;
+
+            }
+        });
+    }
+    addClose(): void {
+        this.closeAdd.emit(this.toggleCreate);
+    }
+
+    editClose(): void {
+        this.closeEdit.emit(this.formUpdate);
+    }
+
 }
