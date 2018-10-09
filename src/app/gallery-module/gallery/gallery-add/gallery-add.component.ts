@@ -1,5 +1,7 @@
-import {Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+
+import {GalleryService} from "../../../gallery.service";
 import {Picture} from "../Picture";
 
 @Component({
@@ -9,16 +11,15 @@ import {Picture} from "../Picture";
 })
 export class GalleryAddComponent implements OnInit {
     @Input() collection: Picture[];
+
+
     angForm: FormGroup;
-    @Input() edData: Picture;
-    @Input() toggleCreate: boolean;
-    @Input() formUpdate: boolean;
-    @Output() closeAdd: EventEmitter<boolean> = new EventEmitter();
-    @Output() closeEdit: EventEmitter<boolean> = new EventEmitter();
-    angFormEd: FormGroup;
-    constructor(private fb: FormBuilder) {
+    isAdded: boolean = false;
+    confirmationString: string = 'New post has been added';
+
+    constructor(private fb: FormBuilder, private galleryService: GalleryService) {
         this.createForm();
-        this.createFormEd();
+
     }
 
     ngOnInit() {
@@ -32,37 +33,9 @@ export class GalleryAddComponent implements OnInit {
     }
 
     addPost(title: string, url: string): void {
-        const id: number = Math.max(0, ...this.collection.map(({id}) => id)) + 1;
-        const post: Picture = {
-            title,
-            url,
-            id
-        };
-        this.collection.unshift(post);
-    }
-    createFormEd(): void {
-        this.angFormEd = this.fb.group({
-            titleEd: ['', Validators.required],
-            urlEd: ['', Validators.required]
+        this.galleryService.add(title, url).subscribe(res => {
+            this.isAdded = true;
+
         });
     }
-
-    updatePost(title: string, url: string): void {
-        const id: number = this.edData.id;
-        this.collection.forEach(post => {
-            if (post.id === id) {
-                this.edData.title = title;
-                this.edData.url = url;
-
-            }
-        });
-    }
-    addClose(): void {
-        this.closeAdd.emit(this.toggleCreate);
-    }
-
-    editClose(): void {
-        this.closeEdit.emit(this.formUpdate);
-    }
-
 }

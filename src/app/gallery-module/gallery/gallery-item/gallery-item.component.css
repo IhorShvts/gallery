@@ -33,7 +33,6 @@ span {
     text-align: center;
     max-width: 210px;
     min-width: 210px;
-
 }
 
 .ed {
@@ -42,4 +41,8 @@ span {
 
 .del {
     float: right;
+}
+
+.buttons {
+    color: #eaeaea;
 }

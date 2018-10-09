@@ -1,0 +1,37 @@
+<h3>Edit your product</h3>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="angFormEd" novalidate *ngIf="post">
+            <div class="form-group">
+                <label class="col-md-4">Picture Title</label>
+                <input type="text" class="form-control" formControlName="titleEd" #titleEd
+                />
+            </div>
+            <div *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)"
+                 class="alert alert-danger">
+                <div *ngIf="angFormEd.controls['titleEd'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">Picture Address (url)</label>
+                <input type="url" class="form-control" formControlName="urlEd" #urlEd pattern="https?://.+"
+                       title="Include http://"/>
+            </div>
+            <div *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)"
+                 class="alert alert-danger">
+                Address(url) is required.
+                <div *ngIf="angFormEd.controls['urlEd'].errors.required ">
+
+                </div>
+            </div>
+            <div class="form-group but-group">
+                <input type="button"
+                       (click)="updatePost(titleEd.value, urlEd.value); angFormEd.reset(titleEd.value, urlEd.value)"
+                       [disabled]=" angFormEd.invalid"
+                       class="btn btn-primary" value="Update Post">
+                <a routerLink="/" class="btn btn-danger">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
