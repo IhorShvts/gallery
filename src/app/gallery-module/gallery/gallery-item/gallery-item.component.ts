@@ -1,5 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Picture} from '../Picture';
+import { ActivatedRoute } from '@angular/router';
+import {GalleryService} from "../../../gallery.service";
 
 @Component({
     selector: 'app-gallery-item',
@@ -7,16 +9,20 @@ import {Picture} from '../Picture';
     styleUrls: ['./gallery-item.component.css']
 })
 export class GalleryItemComponent implements OnInit {
-    @Input() pic: Picture;
-    @Output() remove: EventEmitter<number> = new EventEmitter();
+   pic: Picture;
 
-    constructor() {
-    }
-
-    removePost(picId: number): void {
-        this.remove.emit(picId);
+    constructor( private route: ActivatedRoute, private galleryService: GalleryService) {
     }
 
     ngOnInit() {
+        this.showPost();
+    }
+
+    showPost(): void {
+        this.route.params.subscribe(params => {
+            this.galleryService.getPicture(params['id']).subscribe(res => {
+                this.pic = res;
+            })
+        })
     }
 }

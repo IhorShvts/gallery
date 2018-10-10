@@ -33,7 +33,7 @@ export class GalleryService {
     }
 
 
-    edit(id: number): Observable<Picture> {
+    getPicture(id: number): Observable<Picture> {
         return this.http.get<Picture>(`${this.galleryUrl}/${id}`);
     }
 
@@ -42,8 +42,6 @@ export class GalleryService {
             title,
             url
         };
-        console.log(`${this.galleryUrl}/${id}`);
-        console.log(postEdObj);
-        return this.http.put<Picture>(`${this.galleryUrl}/${id}`, postEdObj, this.httpOptions);
+        return this.http.patch<Picture>(`${this.galleryUrl}/${id}`, postEdObj, this.httpOptions);
     }
 }

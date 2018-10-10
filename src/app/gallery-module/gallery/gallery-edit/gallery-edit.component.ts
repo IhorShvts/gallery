@@ -25,7 +25,7 @@ export class GalleryEditComponent implements OnInit {
 
     editPost(): void {
         this.route.params.subscribe(params => {
-            this.galleryService.edit(params['id']).subscribe(res => {
+            this.galleryService.getPicture(params['id']).subscribe(res => {
                 this.post = res;
                 this.angFormEd.setValue({titleEd: res.title, urlEd: res.url})
             })
@@ -33,10 +33,9 @@ export class GalleryEditComponent implements OnInit {
     }
 
     updatePost(title: string, url: string): void {
-        const id: number = this.post.id;
         this.route.params.subscribe(params => {
             this.galleryService.update(title, url, params['id']).subscribe(res => {
-                if (res.id === id) {
+                if (res.id === this.post.id) {
                     this.post.title = title;
                     this.post.url = url;
                     this.router.navigate(['/gallery']);

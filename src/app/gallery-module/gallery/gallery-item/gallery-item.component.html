@@ -1,6 +1,10 @@
-<img [src]="pic.url" alt="test" class="img-responsive">
-<p class="lead"><span>{{pic.id}}:</span>{{pic.title}}</p>
-<div class="card buttons">
-    <a class="btn btn-success ed" [routerLink]="['/galleryEdit', pic.id]">Edit</a>
-    <a class="btn btn-danger del" (click)="removePost(pic.id)">Delete</a>
+<h3>About your post</h3>
+<div class="card  w-75" *ngIf="pic">
+    <img class="card-img-top" [src]="pic.url" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Post ID: {{pic.id}}</h5>
+        <p class="card-text">{{pic.title}}</p>
+        <a routerLink="/" class="btn btn-danger">Back</a>
+    </div>
 </div>
+
