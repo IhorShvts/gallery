@@ -55,7 +55,7 @@ span {
 }
 
 .buttons {
-    margin: -16px 0 10px 0;
+    margin: -17px 0 15px 0;
     text-align: center;
     max-width: 210px;
     min-width: 210px;
@@ -71,6 +71,7 @@ span {
 
 .buttons {
     color: #eaeaea;
+
 }
 a {
     text-decoration: none;

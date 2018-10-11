@@ -1,10 +1,55 @@
-<h3>About your post</h3>
-<div class="card  w-75" *ngIf="pic">
-    <img class="card-img-top" [src]="pic.url" alt="Card image cap">
-    <div class="card-body">
-        <h5 class="card-title">Post ID: {{pic.id}}</h5>
-        <p class="card-text">{{pic.title}}</p>
-        <a routerLink="/" class="btn btn-danger">Back</a>
+<div class="alert alert-danger alert-dismissible" *ngIf="!exist">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Post doesn't exist</strong>
+</div>
+<div *ngIf="pic">
+    <div class="card  w-75">
+        <h3>About your post</h3>
+        <img class="card-img-top" [src]="pic.url" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Post ID: {{pic.id}}</h5>
+            <p class="card-text">{{pic.title}}</p>
+            <a routerLink="/" class="btn btn-danger dg">Back</a>
+            <button class="btn ed" [class.btn-success]="!toggleEdit" [class.btn-danger]="toggleEdit"
+                    (click)="makeToggleEdit()">{{toggleEdit ? 'Close' : 'Edit'}}</button>
+        </div>
+    </div>
+    <div class="card" *ngIf="toggleEdit">
+        <h4>Edit your post</h4>
+        <div class="card-body">
+            <form [formGroup]="angFormEd" novalidate>
+                <div class="form-group">
+                    <label class="col-md-4">Picture Title</label>
+                    <input type="text" class="form-control" formControlName="titleEd" #titleEd
+                    />
+                </div>
+                <div *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)"
+                     class="alert alert-danger">
+                    <div *ngIf="angFormEd.controls['titleEd'].errors.required">
+                        Title is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4">Picture Address (url)</label>
+                    <input type="url" class="form-control" formControlName="urlEd" #urlEd pattern="https?://.+"
+                           title="Include http://"/>
+                </div>
+                <div *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)"
+                     class="alert alert-danger">
+                    Address(url) is required.
+                    <div *ngIf="angFormEd.controls['urlEd'].errors.required ">
+
+                    </div>
+                </div>
+                <div class="form-group but-group">
+                    <input type="button"
+                           (click)="updatePost(titleEd.value, urlEd.value)"
+                           [disabled]=" angFormEd.invalid"
+                           class="btn btn-primary" value="Update Post">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
 

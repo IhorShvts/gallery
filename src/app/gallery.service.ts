@@ -3,15 +3,15 @@ import {Picture} from "./gallery-module/gallery/Picture";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from 'rxjs';
 
+const httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+
 @Injectable({
     providedIn: 'root'
 })
 export class GalleryService {
     galleryUrl: string = 'http://localhost:5555/posts';
-    httpOptions: object = {
-        headers: new HttpHeaders({'Content-Type': 'application/json'})
-    };
-
 
     constructor(private http: HttpClient) {
     }
@@ -21,7 +21,7 @@ export class GalleryService {
     }
 
     remove(picId: number): Observable<Picture> {
-        return this.http.delete<Picture>(`${this.galleryUrl}/${picId}`, this.httpOptions);
+        return this.http.delete<Picture>(`${this.galleryUrl}/${picId}`, httpOptions);
     }
 
     add(title: string, url: string): Observable<Picture> {
@@ -29,9 +29,8 @@ export class GalleryService {
             title,
             url
         };
-        return this.http.post<Picture>(this.galleryUrl, postObj, this.httpOptions);
+        return this.http.post<Picture>(this.galleryUrl, postObj, httpOptions);
     }
-
 
     getPicture(id: number): Observable<Picture> {
         return this.http.get<Picture>(`${this.galleryUrl}/${id}`);
@@ -42,6 +41,6 @@ export class GalleryService {
             title,
             url
         };
-        return this.http.patch<Picture>(`${this.galleryUrl}/${id}`, postEdObj, this.httpOptions);
+        return this.http.patch<Picture>(`${this.galleryUrl}/${id}`, postEdObj, httpOptions);
     }
 }

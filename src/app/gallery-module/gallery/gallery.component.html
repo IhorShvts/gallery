@@ -20,7 +20,6 @@
             <p class="lead"><span>{{pic.id}}:</span>{{pic.title}}</p>
         </a>
         <div class="card buttons">
-            <a class="btn btn-success ed" [routerLink]="['/galleryEdit', pic.id]">Edit</a>
             <a class="btn btn-danger del" (click)="removePost(pic.id)">Delete</a>
         </div>
     </div>

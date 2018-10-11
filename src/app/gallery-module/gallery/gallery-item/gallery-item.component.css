@@ -1,5 +1,10 @@
-.btn-danger {
+.dg {
     float: right;
+    color: #eaeaea;
+}
+.ed {
+    float: left;
+    color: #eaeaea;
 }
 
 .card {
@@ -9,5 +14,15 @@
 h3 {
     text-align: center;
     color: #5e5e5e;
-    margin-bottom: 30px;
 }
+.but-group {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    color: #5e5e5e;
+    margin: 15px 0 15px 0;
+}
+
+.card { max-width: 699px}

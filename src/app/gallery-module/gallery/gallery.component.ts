@@ -44,10 +44,13 @@ export class GalleryComponent implements OnInit {
 
 
     removePost(picId: number): void {
-        this.galleryService.remove(picId).subscribe(res => {
-            this.collection.splice(this.collection.findIndex(n => n.id === picId), 1);
-            this.save();
-            this.getCollection();
-        })
+        if(confirm('Are you sure ?')) {
+            this.galleryService.remove(picId).subscribe(res => {
+                this.collection.splice(this.collection.findIndex(n => n.id === picId), 1);
+                this.save();
+                this.getCollection();
+            })
+        }
+
     }
 }
