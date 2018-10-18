@@ -2,6 +2,7 @@
     float: right;
     color: #eaeaea;
 }
+
 .ed {
     float: left;
     color: #eaeaea;
@@ -15,6 +16,7 @@ h3 {
     text-align: center;
     color: #5e5e5e;
 }
+
 .but-group {
     text-align: center;
 }
@@ -25,4 +27,14 @@ h4 {
     margin: 15px 0 15px 0;
 }
 
-.card { max-width: 699px}
+.card {
+    max-width: 699px
+}
+
+.alert {
+    margin-top: 15px;
+}
+
+.item {
+    margin-top: 15px;
+}

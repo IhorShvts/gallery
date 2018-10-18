@@ -1,31 +1,33 @@
-<div class="header">
+ <div class="header" >
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <h1>{{gallery}}</h1>
+                <div class="create-post">
+                    <a routerLink="./add" class="btn btn-outline-success tog" >
+                        Add New Post
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-12">
-            <h1>{{gallery}}</h1>
-            <div class="create-post">
-                <a routerLink="/gallery-add" class="btn btn-outline-success tog">
-                    Add New Post
-                </a>
+        <div class="col-lg-3 col-md-4 col-6" *ngFor="let pic of collection">
+            <a [routerLink]="[pic.id]">
+                <img [src]="pic.url" alt="test" class="img-responsive">
+                <p class="lead"><span>{{pic.id}}:</span>{{pic.title}}</p>
+            </a>
+            <div class="card buttons">
+                <a class="btn btn-danger del" (click)="removePost(pic.id)">Delete</a>
             </div>
         </div>
-
     </div>
-</div>
-
-
-<div class="row">
-    <div class="col-lg-3 col-md-4 col-6" *ngFor="let pic of collection">
-        <a [routerLink]="['/galleryItem', pic.id]">
-            <img [src]="pic.url" alt="test" class="img-responsive">
-            <p class="lead"><span>{{pic.id}}:</span>{{pic.title}}</p>
-        </a>
-        <div class="card buttons">
-            <a class="btn btn-danger del" (click)="removePost(pic.id)">Delete</a>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-12">
-    </div>
-</div>
+
+
+
 

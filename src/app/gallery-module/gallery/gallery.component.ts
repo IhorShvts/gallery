@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Picture} from "./Picture";
 import {GalleryService} from '../../gallery.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-gallery',
@@ -11,13 +12,11 @@ export class GalleryComponent implements OnInit {
     collection: Picture[] = [];
     gallery: string = 'My gallery';
 
-    constructor(private galleryService: GalleryService) {
-
+    constructor(private galleryService: GalleryService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.getPictures();
-
     }
 
     save(): void {
@@ -29,8 +28,8 @@ export class GalleryComponent implements OnInit {
     }
 
     getPictures() {
-        this.galleryService.getPictures().subscribe((data: Picture[]) => {
-            data.forEach(post => {
+        this.route.data.subscribe(data => {
+            data.posts.forEach(post => {
                 if (post.id > 10) {
                     this.collection.unshift(post);
                 } else {
@@ -42,9 +41,8 @@ export class GalleryComponent implements OnInit {
         })
     }
 
-
     removePost(picId: number): void {
-        if(confirm('Are you sure ?')) {
+        if (confirm('Are you sure ?')) {
             this.galleryService.remove(picId).subscribe(res => {
                 this.collection.splice(this.collection.findIndex(n => n.id === picId), 1);
                 this.save();
@@ -53,4 +51,5 @@ export class GalleryComponent implements OnInit {
         }
 
     }
+
 }

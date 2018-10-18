@@ -13,6 +13,7 @@ const httpOptions = {
 export class GalleryService {
     galleryUrl: string = 'http://localhost:5555/posts';
 
+
     constructor(private http: HttpClient) {
     }
 

@@ -2,14 +2,14 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Post doesn't exist</strong>
 </div>
-<div *ngIf="pic">
+<div *ngIf="pic" class="item">
     <div class="card  w-75">
         <h3>About your post</h3>
         <img class="card-img-top" [src]="pic.url" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">Post ID: {{pic.id}}</h5>
             <p class="card-text">{{pic.title}}</p>
-            <a routerLink="/" class="btn btn-danger dg">Back</a>
+            <a routerLink="/gallery" class="btn btn-danger dg">Back</a>
             <button class="btn ed" [class.btn-success]="!toggleEdit" [class.btn-danger]="toggleEdit"
                     (click)="makeToggleEdit()">{{toggleEdit ? 'Close' : 'Edit'}}</button>
         </div>
@@ -51,5 +51,4 @@
         </div>
     </div>
 </div>
-
 

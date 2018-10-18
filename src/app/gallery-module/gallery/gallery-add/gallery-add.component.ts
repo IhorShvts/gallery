@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import {GalleryService} from "../../../gallery.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-gallery-add',
@@ -13,11 +14,13 @@ export class GalleryAddComponent implements OnInit {
     isAdded: boolean = false;
     confirmationString: string = 'New post has been added';
 
-    constructor(private fb: FormBuilder, private galleryService: GalleryService) {
+    constructor(private fb: FormBuilder, private galleryService: GalleryService,
+                private router: Router) {
         this.createForm();
     }
 
     ngOnInit() {
+
     }
 
     createForm(): void {
@@ -30,6 +33,7 @@ export class GalleryAddComponent implements OnInit {
     addPost(title: string, url: string): void {
         this.galleryService.add(title, url).subscribe(res => {
             this.isAdded = true;
+            this.router.navigate(['/gallery']);
         });
     }
 }

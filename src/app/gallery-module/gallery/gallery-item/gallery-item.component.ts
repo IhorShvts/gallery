@@ -14,7 +14,9 @@ export class GalleryItemComponent implements OnInit {
    angFormEd: FormGroup;
    exist: boolean = false;
    toggleEdit: boolean = false;
+
     constructor( private route: ActivatedRoute, private galleryService: GalleryService, private fb: FormBuilder,) {
+
     }
 
     ngOnInit() {
@@ -33,12 +35,10 @@ export class GalleryItemComponent implements OnInit {
     }
 
     showPost(): void {
-        this.route.params.subscribe(params => {
-            this.galleryService.getPicture(params['id']).subscribe(res => {
-                this.exist = true;
-                this.pic = res;
-                this.angFormEd.setValue({titleEd: res.title, urlEd: res.url})
-            })
+        this.route.data.subscribe(params => {
+            this.exist = true;
+            this.pic = params.post;
+            this.angFormEd.setValue({titleEd: params.post.title, urlEd: params.post.url});
         })
     }
     updatePost(title: string, url: string): void {
@@ -53,4 +53,5 @@ export class GalleryItemComponent implements OnInit {
             });
         });
     }
+
 }
