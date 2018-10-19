@@ -20,7 +20,7 @@ import {PostResolver} from "./post.resolver";
     imports: [
         BrowserModule,
         HttpClientModule,
-        GalleryModuleModule,
+        // GalleryModuleModule,
         AppRoutingModule
 
     ],

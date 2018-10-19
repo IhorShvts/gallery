@@ -9,7 +9,7 @@ import {GalleryAddComponent} from './gallery/gallery-add/gallery-add.component';
 
 import {HttpClientModule} from "@angular/common/http";
 import { GalleryRoutingModule } from  './gallery-routing.module';
-import { GalleryMainComponent } from './gallery-main/gallery-main.component';
+
 
 
 @NgModule({
@@ -20,8 +20,8 @@ import { GalleryMainComponent } from './gallery-main/gallery-main.component';
         HttpClientModule
 
     ],
-    declarations: [GalleryComponent, GalleryItemComponent, GalleryAddComponent, GalleryMainComponent],
-    exports: [GalleryComponent, GalleryItemComponent, GalleryAddComponent,GalleryMainComponent],
+    declarations: [GalleryComponent, GalleryItemComponent, GalleryAddComponent],
+    exports: [GalleryComponent, GalleryItemComponent, GalleryAddComponent],
 })
 export class GalleryModuleModule {
 }

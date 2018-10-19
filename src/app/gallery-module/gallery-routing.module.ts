@@ -7,15 +7,13 @@ import {GalleryItemComponent} from "./gallery/gallery-item/gallery-item.componen
 import {GalleryComponent} from "./gallery/gallery.component";
 import {GalleryAddComponent} from './gallery/gallery-add/gallery-add.component';
 import {AuthGuard} from  '../auth.guard';
-import {GalleryMainComponent} from "./gallery-main/gallery-main.component";
 import { PostsResolver } from  '../posts.resolver';
 import {PostResolver} from "../post.resolver";
 
 
 const galleryRoutes: Routes = [
     {
-        path: 'gallery',
-        component: GalleryMainComponent,
+        path: '',
         canActivate: [AuthGuard],
         children: [
             {path: '', component: GalleryComponent, resolve: {posts: PostsResolver}},
