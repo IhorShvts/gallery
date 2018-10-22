@@ -10,13 +10,21 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class GalleryComponent implements OnInit {
     collection: Picture[] = [];
-    gallery: string = 'My gallery';
+    gallery: string = 'Orcs from gundabad';
+    toggDate: any = [];
+
 
     constructor(private galleryService: GalleryService, private route: ActivatedRoute) {
+
     }
 
     ngOnInit() {
         this.getPictures();
+
+    }
+
+    toggleDate(picId: number) {
+        this.toggDate[picId] = !this.toggDate[picId];
     }
 
     save(): void {

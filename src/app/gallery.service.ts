@@ -25,10 +25,11 @@ export class GalleryService {
         return this.http.delete<Picture>(`${this.galleryUrl}/${picId}`, httpOptions);
     }
 
-    add(title: string, url: string): Observable<Picture> {
+    add(title: string, url: string, date: Date): Observable<Picture> {
         const postObj = {
             title,
-            url
+            url,
+            date
         };
         return this.http.post<Picture>(this.galleryUrl, postObj, httpOptions);
     }

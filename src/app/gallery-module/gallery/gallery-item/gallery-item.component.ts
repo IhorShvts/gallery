@@ -53,5 +53,4 @@ export class GalleryItemComponent implements OnInit {
             });
         });
     }
-
 }

@@ -31,7 +31,8 @@ export class GalleryAddComponent implements OnInit {
     }
 
     addPost(title: string, url: string): void {
-        this.galleryService.add(title, url).subscribe(res => {
+        const date = new Date();
+        this.galleryService.add(title, url, date).subscribe(res => {
             this.isAdded = true;
             this.router.navigate(['/gallery']);
         });
