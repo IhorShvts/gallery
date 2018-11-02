@@ -13,8 +13,8 @@
                      fxLayout="column"
                      fxLayoutGap="30px">
                     <mat-form-field appearance="fill">
-                        <mat-label>Picture Title*</mat-label>
-                        <input matInput placeholder="Title" formControlName="titleEd" #titleEd>
+                        <mat-label>Picture Title</mat-label>
+                        <input matInput placeholder="Title" formControlName="titleEd" #titleEd required>
                         <mat-icon matSuffix>text_format</mat-icon>
                         <mat-error
                                 *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)">
@@ -23,10 +23,11 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>Picture Address (url)*</mat-label>
+                        <mat-label>Picture Address (url)</mat-label>
                         <input matInput placeholder="Url"
                                formControlName="urlEd"
                                #urlEd
+                               required
                                pattern="https?://.+"
                                title="Include http://">
                         <mat-icon matSuffix>http</mat-icon>

@@ -1,41 +1,56 @@
-<h3>Add new orc</h3>
-<div class="card">
-    <div class="card-body">
-        <form [formGroup]="angForm" novalidate>
-            <div class="form-group">
-                <label class="col-md-4">Picture Title</label>
-                <input type="text" class="form-control" formControlName="title" minlength="1" maxlength="20" #title/>
-            </div>
-            <div *ngIf="angForm.controls['title'].invalid && (angForm.controls['title'].dirty || angForm.controls['title'].touched)"
-                 class="alert alert-danger">
-                <div *ngIf="angForm.controls['title'].errors.required">
-                    Title is required.
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-4">Picture Address (url)</label>
-                <input type="url" class="form-control" formControlName="url" #url pattern="https?://.+"
-                       title="Include http://"/>
-            </div>
-            <div *ngIf="angForm.controls['url'].invalid && (angForm.controls['url'].dirty || angForm.controls['url'].touched)"
-                 class="alert alert-danger">
-                Address(url) is required.
-                <div *ngIf="angForm.controls['url'].errors.required ">
+<div class="item">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center">
+            <mat-card-title>Add new orc</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="angForm" novalidate>
+                <div class="field-container"
+                     fxLayout="column"
+                     fxLayoutGap="30px">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Picture Title</mat-label>
+                        <input matInput placeholder="Title" formControlName="title" minlength="1" maxlength="20" #title
+                               required>
+                        <mat-icon matSuffix>text_format</mat-icon>
+                        <mat-error
+                                *ngIf="angForm.controls['title'].invalid && (angForm.controls['title'].dirty || angForm.controls['title'].touched)">
+                            Title is required.
+                        </mat-error>
+                    </mat-form-field>
 
+                    <mat-form-field appearance="fill">
+                        <mat-label>Picture Address (url)</mat-label>
+                        <input matInput placeholder="Url"
+                               formControlName="url"
+                               #url
+                               required
+                               pattern="https?://.+"
+                               title="Include http://">
+                        <mat-icon matSuffix>http</mat-icon>
+                        <mat-error
+                                *ngIf="angForm.controls['url'].invalid && (angForm.controls['url'].dirty || angForm.controls['url'].touched)">
+                            Address(url) is required.
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-            </div>
-            <div class="form-group but-group">
-                <button (click)="addPost(title.value, url.value);  angForm.reset(title.value, url.value)"
-                        [disabled]="angForm.pristine || angForm.invalid"
-                        class="btn btn-primary">Add
-                </button>
-                <a routerLink="/gallery" class="btn btn-danger">Back</a>
-            </div>
-        </form>
-    </div>
+                <div class="edit-buttons" fxLayoutAlign="space-between">
+                    <button mat-raised-button
+                            color="primary"
+                            (click)="addPost(title.value, url.value);  angForm.reset(title.value, url.value)"
+                            [disabled]="angForm.pristine || angForm.invalid">
+                        Add
+                    </button>
+                    <button mat-raised-button
+                            color="warn"
+                            routerLink="/gallery">
+                        Back
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
 </div>
-<br>
-
 
 
 

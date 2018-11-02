@@ -1,0 +1,55 @@
+<div class="item">
+  <mat-card>
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>Edit your post</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="angFormEd"  (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate >
+        <div class="field-container"
+             fxLayout="column"
+             fxLayoutGap="30px">
+          <mat-form-field appearance="fill">
+            <mat-label>Picture Title</mat-label>
+            <input matInput placeholder="Title" formControlName="titleEd"
+
+                   #titleEd required>
+            <mat-icon matSuffix>text_format</mat-icon>
+            <mat-error
+                    *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)">
+              Title is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Picture Address (url)</mat-label>
+            <input matInput placeholder="Url"
+                   formControlName="urlEd"
+
+                   #url
+                   required
+                   pattern="https?://.+"
+                   title="Include http://">
+            <mat-icon matSuffix>http</mat-icon>
+            <mat-error
+                    *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)">
+              Address(url) is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="edit-buttons" fxLayoutAlign="space-between">
+          <button mat-raised-button
+                  color="primary"
+                  type="submit"
+                  [disabled]=" angFormEd.invalid">
+            Update Orc
+          </button>
+          <button mat-raised-button
+                  color="warn"
+                  routerLink="/gallery">
+            Back
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
