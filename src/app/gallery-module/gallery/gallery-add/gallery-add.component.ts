@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import {GalleryService} from "../../../gallery.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-gallery-add',
@@ -11,11 +12,11 @@ import {Router} from "@angular/router";
 })
 export class GalleryAddComponent implements OnInit {
     angForm: FormGroup;
-    isAdded: boolean = false;
-    confirmationString: string = 'New post has been added';
 
-    constructor(private fb: FormBuilder, private galleryService: GalleryService,
-                private router: Router) {
+    constructor(private fb: FormBuilder,
+                private galleryService: GalleryService,
+                private router: Router,
+                private snackBar: MatSnackBar) {
         this.createForm();
     }
 
@@ -31,10 +32,18 @@ export class GalleryAddComponent implements OnInit {
     }
 
     addPost(title: string, url: string): void {
-        const date = new Date();
+        const date: Date = new Date();
         this.galleryService.add(title, url, date).subscribe(res => {
-            this.isAdded = true;
+            this.openSnackBar();
             this.router.navigate(['/gallery']);
         });
     }
+
+    openSnackBar() {
+        this.snackBar.open('New orc has been added', 'X', {
+            duration: 3000,
+        });
+    }
 }
+
+

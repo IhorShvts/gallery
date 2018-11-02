@@ -4,7 +4,7 @@
         <form [formGroup]="angForm" novalidate>
             <div class="form-group">
                 <label class="col-md-4">Picture Title</label>
-                <input type="text" class="form-control" formControlName="title" minlength="1" #title/>
+                <input type="text" class="form-control" formControlName="title" minlength="1" maxlength="20" #title/>
             </div>
             <div *ngIf="angForm.controls['title'].invalid && (angForm.controls['title'].dirty || angForm.controls['title'].touched)"
                  class="alert alert-danger">
@@ -35,7 +35,7 @@
     </div>
 </div>
 <br>
-<div class="alert alert-success alert-dismissible" *ngIf="isAdded">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>{{confirmationString}}</strong>
-</div>
+
+
+
+

@@ -11,6 +11,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {GalleryRoutingModule} from  './gallery-routing.module';
 import {TruncatePipe} from "./truncate.pipe";
 import {HighlightDirective} from "./gallery/highlight.directive";
+import {MaterialModule} from "../material/material.module";
+import {GalleryDialogComponent} from './gallery/gallery-dialog/gallery-dialog.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -18,11 +21,14 @@ import {HighlightDirective} from "./gallery/highlight.directive";
         CommonModule,
         ReactiveFormsModule,
         GalleryRoutingModule,
-        HttpClientModule
-
+        HttpClientModule,
+        MaterialModule,
+        FlexLayoutModule
     ],
-    declarations: [GalleryComponent, GalleryItemComponent, GalleryAddComponent, TruncatePipe, HighlightDirective],
+    declarations: [GalleryComponent, GalleryItemComponent, GalleryAddComponent, TruncatePipe, HighlightDirective, GalleryDialogComponent],
     exports: [GalleryComponent, GalleryItemComponent, GalleryAddComponent, HighlightDirective],
+    entryComponents: [GalleryDialogComponent],
+
 })
 export class GalleryModuleModule {
 }

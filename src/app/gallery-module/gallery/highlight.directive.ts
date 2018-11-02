@@ -20,5 +20,4 @@ export class HighlightDirective {
     private  hightLight(color: string) {
         this.el.nativeElement.style.backgroundColor = color;
     }
-
 }

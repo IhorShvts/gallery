@@ -1,1 +1,25 @@
-.btn { color: #dddddd!important;}
+.btn {
+    color: #dddddd !important;
+}
+
+.nav-panel {
+    background-color: #474d47;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #dddddd;
+    margin-right: 15px;
+}
+
+a:hover {
+    color: #f9f9f9;
+}
+
+.active {
+    color: white;
+}

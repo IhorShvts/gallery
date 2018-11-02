@@ -7,7 +7,7 @@ import {GalleryItemComponent} from "./gallery/gallery-item/gallery-item.componen
 import {GalleryComponent} from "./gallery/gallery.component";
 import {GalleryAddComponent} from './gallery/gallery-add/gallery-add.component';
 import {AuthGuard} from  '../auth.guard';
-import { PostsResolver } from  '../posts.resolver';
+import {PostsResolver} from  '../posts.resolver';
 import {PostResolver} from "../post.resolver";
 
 

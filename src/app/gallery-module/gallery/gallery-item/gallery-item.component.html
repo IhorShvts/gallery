@@ -2,54 +2,54 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Post doesn't exist</strong>
 </div>
-<div *ngIf="pic" class="item">
-    <div class="card  w-75">
-        <h3>About orc</h3>
-        <img class="card-img-top" [src]="pic.url" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Orc number: {{pic.id}}</h5>
-            <p class="card-text"><strong>What orc says about himself:</strong> {{pic.title}}</p>
-            <p class="card-text"><strong>Orc birthday:</strong> <span class="date-info" [Highlight]>{{ pic.date | date: 'fullDate'}}</span></p>
-            <a routerLink="/gallery" class="btn btn-danger dg">Back</a>
-            <button class="btn ed" [class.btn-success]="!toggleEdit" [class.btn-danger]="toggleEdit"
-                    (click)="makeToggleEdit()">{{toggleEdit ? 'Close' : 'Edit'}}</button>
-        </div>
-    </div>
-    <div class="card" *ngIf="toggleEdit">
-        <h4>Edit your post</h4>
-        <div class="card-body">
+<div class="item">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center">
+            <mat-card-title>Edit your post</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
             <form [formGroup]="angFormEd" novalidate>
-                <div class="form-group">
-                    <label class="col-md-4">Picture Title</label>
-                    <input type="text" class="form-control" formControlName="titleEd" #titleEd
-                    />
-                </div>
-                <div *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)"
-                     class="alert alert-danger">
-                    <div *ngIf="angFormEd.controls['titleEd'].errors.required">
-                        Title is required.
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4">Picture Address (url)</label>
-                    <input type="url" class="form-control" formControlName="urlEd" #urlEd pattern="https?://.+"
-                           title="Include http://"/>
-                </div>
-                <div *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)"
-                     class="alert alert-danger">
-                    Address(url) is required.
-                    <div *ngIf="angFormEd.controls['urlEd'].errors.required ">
+                <div class="field-container"
+                     fxLayout="column"
+                     fxLayoutGap="30px">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Picture Title*</mat-label>
+                        <input matInput placeholder="Title" formControlName="titleEd" #titleEd>
+                        <mat-icon matSuffix>text_format</mat-icon>
+                        <mat-error
+                                *ngIf="angFormEd.controls['titleEd'].invalid && (angFormEd.controls['titleEd'].dirty || angFormEd.controls['titleEd'].touched)">
+                            Title is required.
+                        </mat-error>
+                    </mat-form-field>
 
-                    </div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Picture Address (url)*</mat-label>
+                        <input matInput placeholder="Url"
+                               formControlName="urlEd"
+                               #urlEd
+                               pattern="https?://.+"
+                               title="Include http://">
+                        <mat-icon matSuffix>http</mat-icon>
+                        <mat-error
+                                *ngIf="angFormEd.controls['urlEd'].invalid && (angFormEd.controls['urlEd'].dirty || angFormEd.controls['urlEd'].touched)">
+                            Address(url) is required.
+                        </mat-error>
+                    </mat-form-field>
                 </div>
-                <div class="form-group but-group">
-                    <input type="button"
-                           (click)="updatePost(titleEd.value, urlEd.value)"
-                           [disabled]=" angFormEd.invalid"
-                           class="btn btn-primary" value="Update Post">
+                <div class="edit-buttons" fxLayoutAlign="space-between">
+                    <button mat-raised-button
+                            color="primary"
+                            [disabled]=" angFormEd.invalid"
+                            (click)="updatePost(titleEd.value, urlEd.value)">
+                        Update Orc
+                    </button>
+                    <button mat-raised-button
+                            color="warn"
+                            routerLink="/gallery">
+                        Back
+                    </button>
                 </div>
             </form>
-        </div>
-    </div>
+        </mat-card-content>
+    </mat-card>
 </div>
-

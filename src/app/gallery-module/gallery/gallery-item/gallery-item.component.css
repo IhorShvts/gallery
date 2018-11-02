@@ -1,24 +1,6 @@
-.dg {
-    float: right;
-    color: #eaeaea;
-}
-
-.ed {
-    float: left;
-    color: #eaeaea;
-}
-
 .card {
-    margin: 0 auto;
-}
-
-h3 {
-    text-align: center;
-    color: #5e5e5e;
-}
-
-.but-group {
-    text-align: center;
+    max-width: 768px;
+    min-width: 768px;
 }
 
 h4 {
@@ -27,18 +9,14 @@ h4 {
     margin: 15px 0 15px 0;
 }
 
-.card {
-    max-width: 699px
-}
-
 .alert {
     margin-top: 15px;
 }
 
 .item {
-    margin-top: 15px;
+    margin-top: 50px;
 }
 
-.date-info {
-    padding-left:5px;
+.edit-buttons {
+    margin-top: 20px;
 }

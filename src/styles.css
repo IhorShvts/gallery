@@ -1,4 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
     background:
             linear-gradient(225deg, transparent 24.5%, #449CB4 24.6%, transparent 24.8%) 37px -37px,
@@ -12,3 +13,6 @@ body {
     background-size: 148px 148px;
     background-color: #E8F4F2;
 }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

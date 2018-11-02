@@ -3,36 +3,49 @@
         <div class="col-lg-12 col-md-12 col-12">
             <h1>{{gallery | uppercase}}</h1>
             <div class="create-post">
-                <a routerLink="./add" class="btn btn-outline-success tog">
+                <a mat-stroked-button routerLink="./add" class="add">
                     Add New Orc
                 </a>
             </div>
         </div>
-
     </div>
 </div>
+<div fxLayout="row wrap"
+     fxLayoutGap="30px"
+     fxLayoutAlign="center">
 
-<div class="row">
-    <div class="col-lg-3 col-md-4 col-6" *ngFor="let pic of collection; ">
-        <div class="info">
-            <a [routerLink]="[pic.id]">
-                <img [src]="pic.url" alt="test" class="img-responsive">
-                <p class="lead"><span>{{pic.id}}:</span>{{pic.title | truncate:'14':true}}</p>
+    <mat-card class="card" *ngFor="let pic of collection;">
+        <mat-card-content>
+            <a (click)="openAddFileDialog(pic)" class="loupe">
+                <img mat-card-image [src]="pic.url" alt="test">
+                <p><span>{{pic.id}}:</span>{{pic.title | truncate:'14':true}}</p>
             </a>
-            <p class="more-info-text">Orc birthday: <span [Highlight]>{{ pic.date | date: toggDate[pic.id] ? 'fullDate' : 'shortDate' }}</span>
+            <p>Orc birthday:
+                <span [Highlight]>{{ pic.date | date: toggDate[pic.id] ? 'fullDate' : 'shortDate' }}</span>
             </p>
-        </div>
-        <div class="card buttons">
-            <button class="btn btn-info" (click)="toggleDate(pic.id)">{{toggDate[pic.id] ? 'Short date' : 'Full date'}}
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="toggleDate(pic.id)">{{toggDate[pic.id] ? 'Short date' :
+                'Full date'}}
             </button>
-            <a class="btn btn-danger del" (click)="removePost(pic.id)">Delete</a>
-        </div>
-    </div>
+            <button class=" del"
+                    mat-mini-fab
+                    color="warn"
+                    (click)="removePost(pic.id)"
+                    matTooltip="delete"
+                    matTooltipClass="example-tooltip-red">
+                <mat-icon class="close">close</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <div class="hide-item"></div>
+    <div class="hide-item"></div>
+    <div class="hide-item"></div>
 </div>
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-12">
-    </div>
-</div>
+
+
+
 
 
 

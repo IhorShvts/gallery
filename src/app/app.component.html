@@ -1,30 +1,23 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="mx-auto order-0">
-        <a routerLink="/" class="navbar-brand mx-auto">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a routerLink="/gallery" routerLinkActive="active" class="nav-link">Gallery</a>
-            </li>
-            <li class="nav-item">
-            <li class="nav-item">
-                <a class="btn btn-outline-success"
-                   [class.btn-outline-success]="!this.loggedInService.loggedIn"
-                   [class.btn-outline-danger]="this.loggedInService.loggedIn"
-                   (click)="this.loggedInService.loggedIn ? logout() : logIn()">
-                    {{this.loggedInService.loggedIn? 'Exit' : 'Enter'}}
-                </a>
-            </li>
-
-        </ul>
-    </div>
+<nav>
+    <mat-toolbar color="primary" class="nav-panel">
+        <mat-toolbar-row>
+            <a routerLink="/" routerLinkActive="active-link" [routerLinkActive]="['active']">Home
+                <mat-icon>home</mat-icon>
+            </a>
+            <span class="example-spacer"></span>
+            <a routerLink="/gallery" [routerLinkActive]="['active']">Gallery</a>
+            <a class="btn btn-outline-success"
+               [class.btn-outline-success]="!this.loggedInService.loggedIn"
+               [class.btn-outline-danger]="this.loggedInService.loggedIn"
+               (click)="this.loggedInService.loggedIn ? logout() : logIn()">
+                {{this.loggedInService.loggedIn? 'Exit' : 'Enter'}}
+            </a>
+        </mat-toolbar-row>
+    </mat-toolbar>
 </nav>
 <div class="container-fluid">
     <div class="container">
+
         <router-outlet></router-outlet>
     </div>
 </div>

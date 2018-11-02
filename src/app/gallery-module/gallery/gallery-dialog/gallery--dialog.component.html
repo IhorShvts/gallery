@@ -1,0 +1,21 @@
+ <mat-card class="card" >
+     <mat-card-title fxLayoutAlign="center">About orc</mat-card-title>
+        <mat-card-content>
+        <mat-dialog-content>
+            <img class="card-img-top" [src]="data.url" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Orc number: {{data.id}}</h5>
+                <p class="card-text"><strong>What orc says about himself:</strong> {{data.title}}</p>
+
+                <p class="card-text"><strong>Orc birthday:</strong> <span class="date-info" [Highlight]>{{ data.date | date: 'fullDate'}}</span>
+                </p>
+            </div>
+        </mat-dialog-content>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between" >
+                <button mat-flat-button  color="primary"  routerLink="gallery/{{data.id}}" [mat-dialog-close]="true">Edit</button>
+                <button mat-flat-button color="warn" (click)="cancel()">Cancel</button>
+            </mat-dialog-actions>
+        </mat-card-actions>
+    </mat-card>

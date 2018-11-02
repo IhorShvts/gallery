@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {
     CanActivate,
     ActivatedRouteSnapshot,
@@ -16,8 +16,9 @@ import {Observable} from "rxjs";
 })
 
 export class PostResolver implements Resolve<Picture> {
-    constructor( private galleryService: GalleryService) {
+    constructor(private galleryService: GalleryService) {
     }
+
     resolve(route: ActivatedRouteSnapshot): Observable<Picture> {
         return this.galleryService.getPicture(+route.paramMap.get('id'));
     }

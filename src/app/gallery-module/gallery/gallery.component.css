@@ -5,19 +5,22 @@
 }
 
 h1 {
-    margin-top:15px;
+    margin-top: 15px;
     font-size: 42px;
 }
 
-.tog {
+.add {
     color: #5e5e5e;
-    border-color: #5e5e5e;
+    border-color: #5e5e5e !important;
     font-size: 18px;
     font-weight: 500;
+    text-decoration: none !important;
+
 }
 
-.tog:hover {
+.add:hover {
     color: #e1e1e1;
+    background-color: #28a745 !important;
 }
 
 .create-post {
@@ -41,53 +44,37 @@ img:hover {
     filter: alpha(opacity=60);
 }
 
-.lead {
-    padding: 8px;
-    color: #5e5e5e;
-}
-.more-info-text {
-    padding-left:5px;
-    font-size:14px;
-}
-.info {
-    color: #5e5e5e;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: sans-serif;
-    max-width: 210px;
-}
-.togg-date {
-
-}
-.more-info {
-    padding:5px;
-    font-size:12px;
-}
-
 span {
     margin-right: 3px;
 }
 
-.buttons {
-    margin: 0px 0 15px 0;
-    text-align: center;
-    max-width: 210px;
-    min-width: 210px;
+a {
+    text-decoration: none;
 }
 
-.ed {
-    float: left;
+.example-tooltip-red {
+    background: #b71c1c;
 }
 
 .del {
     float: right;
 }
 
-.buttons {
-    color: #eaeaea;
-
+.close {
+    margin-left: 3px;
 }
-a {
-    text-decoration: none;
+
+.card {
+    max-width: 210px;
+    min-width: 210px;
+    margin-bottom: 10px;
+}
+
+.loupe {
+    cursor: pointer;
+}
+
+.hide-item {
+    max-width: 210px;
+    min-width: 210px;
 }

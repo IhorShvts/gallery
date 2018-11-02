@@ -1,26 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Picture} from "./Picture";
 import {GalleryService} from '../../gallery.service';
 import {ActivatedRoute} from "@angular/router";
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {GalleryDialogComponent} from "./gallery-dialog/gallery-dialog.component";
+
 
 @Component({
     selector: 'app-gallery',
     templateUrl: './gallery.component.html',
-    styleUrls: ['./gallery.component.css']
+    styleUrls: ['./gallery.component.css'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class GalleryComponent implements OnInit {
     collection: Picture[] = [];
     gallery: string = 'Orcs from gundabad';
-    toggDate: any = [];
+    toggDate: boolean[] = [];
+    dialogRef: MatDialogRef<GalleryDialogComponent>;
 
-
-    constructor(private galleryService: GalleryService, private route: ActivatedRoute) {
-
+    constructor(private galleryService: GalleryService,
+                private route: ActivatedRoute,
+                private dialog: MatDialog) {
     }
 
     ngOnInit() {
         this.getPictures();
-
     }
 
     toggleDate(picId: number) {
@@ -57,7 +61,11 @@ export class GalleryComponent implements OnInit {
                 this.getCollection();
             })
         }
-
     }
 
+    openAddFileDialog(pic) {
+        this.dialogRef = this.dialog.open(GalleryDialogComponent, {
+            data: pic
+        });
+    }
 }

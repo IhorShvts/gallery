@@ -1,22 +1,19 @@
-.card { max-width: 1065px}
+.card {
+    max-width: 1065px
+}
 
-.show-hide {
-    padding: 30px;
-    float: right;
-}
-.create-post {
-    padding: 30px;
-    float: left;
-}
 .but-group {
     text-align: center;
 }
+
 .btn-primary {
     float: left;
 }
+
 .btn-danger {
     float: right;
 }
+
 h3 {
     text-align: center;
     color: #5e5e5e;
