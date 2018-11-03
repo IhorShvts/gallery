@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {LoggedinService} from "./loggedin.service";
+import {Router} from '@angular/router';
+import {LoggedinService} from './loggedin.service';
 
 @Component({
     selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     logIn(): void {
         this.loggedInService.login();
         if (this.loggedInService.loggedIn) {
-            let redirect = this.loggedInService.redirectUrl ? this.loggedInService.redirectUrl :
+            const redirect = this.loggedInService.redirectUrl ? this.loggedInService.redirectUrl :
                 '/gallery';
             this.router.navigate([redirect]);
         }

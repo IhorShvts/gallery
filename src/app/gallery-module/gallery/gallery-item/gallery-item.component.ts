@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Picture} from '../Picture';
 import {ActivatedRoute, Router} from '@angular/router';
-import {GalleryService} from "../../../gallery.service";
+import {GalleryService} from '../../../gallery.service';
 
 
 @Component({
@@ -13,13 +13,12 @@ import {GalleryService} from "../../../gallery.service";
 export class GalleryItemComponent implements OnInit {
     pic: Picture;
     angFormEd: FormGroup;
-    exist: boolean = false;
+    exist = false;
 
     constructor(private route: ActivatedRoute,
                 private galleryService: GalleryService,
                 private fb: FormBuilder,
-                private router: Router,) {
-
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -39,7 +38,7 @@ export class GalleryItemComponent implements OnInit {
             this.exist = true;
             this.pic = params.post;
             this.angFormEd.setValue({titleEd: params.post.title, urlEd: params.post.url});
-        })
+        });
     }
 
     updatePost(title: string, url: string): void {

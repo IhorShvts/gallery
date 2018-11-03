@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Picture} from "./Picture";
+import {Picture} from './Picture';
 import {GalleryService} from '../../gallery.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {GalleryDialogComponent} from "./gallery-dialog/gallery-dialog.component";
+import {GalleryDialogComponent} from './gallery-dialog/gallery-dialog.component';
 
 
 @Component({
@@ -14,7 +14,7 @@ import {GalleryDialogComponent} from "./gallery-dialog/gallery-dialog.component"
 })
 export class GalleryComponent implements OnInit {
     collection: Picture[] = [];
-    gallery: string = 'Orcs from gundabad';
+    gallery = 'Orcs from gundabad';
     toggDate: boolean[] = [];
     dialogRef: MatDialogRef<GalleryDialogComponent>;
 
@@ -32,11 +32,11 @@ export class GalleryComponent implements OnInit {
     }
 
     save(): void {
-        localStorage["Collection"] = JSON.stringify(this.collection);
+        localStorage['Collection'] = JSON.stringify(this.collection);
     }
 
     getCollection() {
-        this.collection = JSON.parse(localStorage["Collection"] || "null");
+        this.collection = JSON.parse(localStorage['Collection'] || 'null');
     }
 
     getPictures() {
@@ -50,7 +50,7 @@ export class GalleryComponent implements OnInit {
                 this.save();
                 this.getCollection();
             });
-        })
+        });
     }
 
     removePost(picId: number): void {
@@ -59,7 +59,7 @@ export class GalleryComponent implements OnInit {
                 this.collection.splice(this.collection.findIndex(n => n.id === picId), 1);
                 this.save();
                 this.getCollection();
-            })
+            });
         }
     }
 

@@ -21,7 +21,7 @@
                 <p><span>{{pic.id}}:</span>{{pic.title | truncate:'14':true}}</p>
             </a>
             <p>Orc birthday:
-                <span [Highlight]>{{ pic.date | date: toggDate[pic.id] ? 'fullDate' : 'shortDate' }}</span>
+                <span appHighlight>{{ pic.date | date: toggDate[pic.id] ? 'fullDate' : 'shortDate' }}</span>
             </p>
         </mat-card-content>
 

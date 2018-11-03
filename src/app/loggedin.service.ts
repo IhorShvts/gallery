@@ -5,7 +5,7 @@ import {Injectable, OnInit} from '@angular/core';
 })
 export class LoggedinService implements OnInit {
     redirectUrl: string;
-    loggedIn: boolean = (localStorage.getItem("login") === 'true') || false;
+    loggedIn: boolean = (localStorage.getItem('login') === 'true') || false;
 
     constructor() {
 

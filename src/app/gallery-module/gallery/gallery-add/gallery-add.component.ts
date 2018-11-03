@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import {GalleryService} from "../../../gallery.service";
-import {Router} from "@angular/router";
+import {GalleryService} from '../../../gallery.service';
+import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Picture} from "./gallery-module/gallery/Picture";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Picture} from './gallery-module/gallery/Picture';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 const httpOptions = {
@@ -11,7 +11,7 @@ const httpOptions = {
     providedIn: 'root'
 })
 export class GalleryService {
-    galleryUrl: string = 'http://localhost:5555/posts';
+    galleryUrl = 'http://localhost:5555/posts';
 
 
     constructor(private http: HttpClient) {
