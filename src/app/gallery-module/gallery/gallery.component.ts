@@ -63,7 +63,7 @@ export class GalleryComponent implements OnInit {
         }
     }
 
-    openAddFileDialog(pic) {
+    openDialog(pic) {
         this.dialogRef = this.dialog.open(GalleryDialogComponent, {
             data: pic
         });

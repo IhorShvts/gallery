@@ -16,7 +16,7 @@
 
     <mat-card class="card" *ngFor="let pic of collection;">
         <mat-card-content>
-            <a (click)="openAddFileDialog(pic)" class="loupe">
+            <a (click)="openDialog(pic)" class="loupe">
                 <img mat-card-image [src]="pic.url" alt="test">
                 <p><span>{{pic.id}}:</span>{{pic.title | truncate:'14':true}}</p>
             </a>
